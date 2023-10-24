@@ -20,5 +20,27 @@ public class PosteDepartement {
     @Column(name = "id_departement", columnDefinition = "int references departement(id_departement)")
     private Long id_departement;
     
-    
+    public Long getId_poste_departement() {
+        return id_poste_departement;
+    }
+
+    public void setId_poste_departement(Long id_poste_departement) {
+        this.id_poste_departement = id_poste_departement;
+    }
+
+    public Long getId_poste() {
+        return id_poste;
+    }
+
+    public void setId_poste(Long id_poste) {
+        this.id_poste = id_poste;
+    }
+
+    public Long getId_departement() {
+        return id_departement;
+    }
+
+    public void setId_departement(Long id_departement) {
+        this.id_departement = id_departement;
+    }
 }
