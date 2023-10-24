@@ -32,7 +32,7 @@ public class SocieteDepartementService {
         return societeDepartementRepository.findById(id).orElse(null);
     }
 
-    public SocieteDepartement updateSocietedeDepartement(Long id, SocieteDepartement societeDepartement) {
+    public SocieteDepartement updateSocieteDepartement(Long id, SocieteDepartement societeDepartement) {
         societeDepartement.setId_societe(id);
         return societeDepartementRepository.save(societeDepartement);
     }
