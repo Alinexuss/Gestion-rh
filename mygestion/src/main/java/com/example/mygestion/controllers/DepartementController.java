@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import com.example.mygestion.models.Departement;
+import com.example.mygestion.models.Societe;
 import com.example.mygestion.models.SocieteDepartement;
 import com.example.mygestion.services.DepartementService;
+import com.example.mygestion.services.SocieteDepartementService;
 
 import static com.example.mygestion.utils.ControllerUtil.returnError; 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class DepartementController {
 
     @Autowired
     private DepartementService departementService;
+
+    @Autowired
+    private SocieteDepartementService societeDepartementService;
 
     @GetMapping("/soc/dept.get")
     public ResponseEntity<?> getAllDepartement() {
@@ -39,8 +44,20 @@ public class DepartementController {
             return returnError(e, HttpStatus.OK);
         }
     }
-    
-    @GetMapping("/soc/{id}")
+
+    /*Creer un nouvel departement par rapport a la societe qui la possede */
+    @PostMapping("/soc/dept.soc/add")
+    public ResponseEntity<?> createDepartementBySociete(@ModelAttribute("Societe") Societe societe ,@ModelAttribute("Departement") Departement departement) {
+        try {
+            departementService.createDepartement(departement);
+            societeDepartementService.addSocieteDepartement(societe, departement);
+            return returnSuccess(departement, "Success for creating", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return returnError(e, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/soc/dept.{id}")
     public ResponseEntity<?> getDepartementById(@PathVariable("id") Long id) {
         try {
             Departement reponse = departementService.getDepartementById(id);

@@ -14,7 +14,7 @@ public class SocieteDepartement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_soc_dept;
 
-    @Column(name = "id_societe", columnDefinition = "int references societe(societe)")
+    @Column(name = "id_societe", columnDefinition = "int references societe(id_societe)")
     private Long id_societe;
 
     @Column(name = "id_departement", columnDefinition = "int references departement(id_departement)")
