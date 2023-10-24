@@ -14,7 +14,7 @@ public class Societe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_societe;
 
-    @Column(name = "Societe", nullable = false, columnDefinition = "varchar(30) default 'No label.'")
+    @Column(name = "societe", nullable = false, columnDefinition = "varchar(30) default 'No label.'")
     private String societename;
 
     public Long getId_societe() {
